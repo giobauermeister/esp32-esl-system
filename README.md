@@ -76,6 +76,7 @@ I (12699) MAIN: UC8253 EPD Initialized and Cleared.
 ```
 
 - The display will show its MAC address at the bottom.
+
 ![Display Mac Adress](repo-assets/mac_addr.png)
 
 - On the Web page type in the information like product description, price and most importantly the tag id.
