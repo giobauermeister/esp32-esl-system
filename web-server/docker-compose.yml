@@ -1,0 +1,13 @@
+services:
+  esl-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"       # Web UI
+      - "1883:1883"   # MQTT (TCP)
+      - "9001:9001"   # MQTT (WebSocket for browser)
+    volumes:
+      - ./web-page:/app                # Live dev reload for web UI
+      - ./mosquitto/mosquitto.conf:/etc/mosquitto/mosquitto.conf
+    restart: unless-stopped

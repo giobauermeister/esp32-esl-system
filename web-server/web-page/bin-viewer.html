@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIN Viewer - ESL Image</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #cacaca;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    canvas {
+      border: 1px solid #aaa;
+      margin-top: 20px;
+      background-color: #838383;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      width: 80px;
+      padding: 6px;
+    }
+
+    input[type="file"] {
+      padding: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>BIN File Viewer for ESL Images</h1>
+
+  <div class="controls">
+    <label for="binFile">Select .bin file:</label>
+    <input type="file" id="binFile" accept=".bin" />
+
+    <label for="imgWidth">Width (px):</label>
+    <input type="number" id="imgWidth" value="200" min="8" step="8" />
+
+    <button onclick="renderBin()">View</button>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    function renderBin() {
+      const fileInput = document.getElementById("binFile");
+      const width = parseInt(document.getElementById("imgWidth").value, 10);
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      if (!fileInput.files[0]) {
+        alert("Please select a .bin file.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const buffer = new Uint8Array(e.target.result);
+
+        // Each column is (height) bits tall
+        const height = Math.floor((buffer.length * 8) / width);
+        canvas.width = width;
+        canvas.height = height;
+
+        const imageData = ctx.createImageData(width, height);
+
+        let byteIndex = 0;
+
+        for (let x = 0; x < width; x++) {
+          for (let yByte = 0; yByte < Math.ceil(height / 8); yByte++) {
+            const byte = buffer[byteIndex++];
+            for (let bit = 0; bit < 8; bit++) {
+              const y = yByte * 8 + bit;
+              if (y >= height) continue;
+
+              const pixel = (byte >> (7 - bit)) & 1;
+              const color = pixel ? 0 : 255;
+
+              const index = (y * width + x) * 4;
+              imageData.data[index] = color;
+              imageData.data[index + 1] = color;
+              imageData.data[index + 2] = color;
+              imageData.data[index + 3] = 255;
+            }
+          }
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+      };
+
+      reader.readAsArrayBuffer(fileInput.files[0]);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #dddddd;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.app-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+#editor {
+    position: relative;
+    display: inline-block;
+    margin-top: 0px;
+}
+
+#tagImage {
+    display: block;
+    max-width: 100%;
+}
+
+.price {
+    font-size: 55px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 85px;
+    left: 265px;
+}
+
+.decimal {
+    font-size: 25px;
+    vertical-align: super;
+    margin-left: 2px;
+}
+
+.tagid {
+    font-size: 18px;
+    font-weight: normal;
+    color: black;
+    position: absolute;
+    top: 212px;
+    left: 75px;
+}
+
+#description {
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    top: 80px;
+    left: 10px;
+}
+
+.desc-line {
+    font-size: 22px;
+    color: black;
+    background-color: white;
+    line-height: 30px;
+    white-space: pre-wrap;
+    font-weight: normal;
+}
+
+.inputs {
+    font-size: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 400px;
+}
+
+input[type="text"] {
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 2px solid #c4c4c4;
+    border-radius: 8px;
+    background-color: white;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+input[type="text"]:focus {
+    border-color: #131313;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(110, 110, 110, 0.2);
+}
+
+label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.lb-product-descr {
+    font-size: 30px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    width: 80px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+}
+
+.export-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.export-buttons button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #628caa;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.export-buttons button:hover {
+    background-color: #206da3;
+}

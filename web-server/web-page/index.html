@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESL System</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <h1>Eletronic Shelf Label System</h1>
+
+  <div class="app-wrapper">
+    
+    <div class="inputs">
+
+      <label class="lb-product-descr">Product Description</label>
+
+      <div class="input-group">
+        <label for="line1Input">Line 1:</label>
+        <input type="text" id="line1Input" placeholder="Line 1" />
+      </div>
+
+      <div class="input-group">
+        <label for="line2Input">Line 2:</label>
+        <input type="text" id="line2Input" placeholder="Line 2" />
+      </div>
+
+      <div class="input-group">
+        <label for="line3Input">Line 3:</label>
+        <input type="text" id="line3Input" placeholder="Line 3" />
+      </div>
+      
+      <div class="input-group">
+        <label for="priceInput">Price:</label>
+        <input type="text" id="priceInput" placeholder="$0.00" />
+      </div>
+      
+      <div class="input-group">
+        <label for="tagIdInput">Tag ID:</label>
+        <input type="text" id="tagIdInput" placeholder="12345" />
+      </div>
+
+      <div class="export-buttons">
+        <button onclick="updateESL()">Update ESL</button>
+      </div>
+
+      <div id="statusMessage" style="position: fixed; top: 20px; right: 20px; z-index: 1000;"></div>
+
+    </div>
+  
+    <div id="editor">
+      <img id="tagImage" src="assets/price_tag_empty_web.png" alt="E-paper template" />
+      <div id="description">
+        <div id="line1" class="desc-line">Line 1</div>
+        <div id="line2" class="desc-line">Line 2</div>
+        <div id="line3" class="desc-line">Line 3</div>
+      </div>
+      <div class="tagid" id="tagid">12345</div>
+      <div class="price" id="price">$0<span class="decimal">00</span></div>
+    </div> 
+
+  </div>  
+
+  <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+</body>
+</html>
